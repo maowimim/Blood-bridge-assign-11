@@ -21,10 +21,11 @@ const router = createBrowserRouter([
     path: "/",
     element:<Rootlayout></Rootlayout>,
     children: [
-      {
-        path:'/',
-        Component: Home
-      },
+     {
+  index: true,
+  element: <Home />
+     },
+
       {
         path:'/login',
         Component: Login

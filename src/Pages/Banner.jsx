@@ -4,17 +4,17 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Banner = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext); // kept as-is (not removed)
+  const { user } = useContext(AuthContext); 
 
-  // Join as Donor → Registration Page
+
   const handleJoin = () => {
     navigate("/register");
   };
 
-  // Search Donors → Search Page (NO role check)
-  const handleSearch = () => {
-    navigate("/search");
-  };
+ const handleSearch = () => {
+  navigate("/search-request");
+};
+
 
   return (
     <section className="relative bg-gradient-to-r from-red-600 to-red-800 py-28 px-4">
