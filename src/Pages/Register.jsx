@@ -1,10 +1,11 @@
 import { FcGoogle } from "react-icons/fc";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { AuthContext } from "../Provider/AuthProvider";
+
 import { updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import axios from "axios";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
     const [upazilas, setUpazilas] = useState([])
@@ -93,118 +94,117 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-6 bg-gray-100 dark:bg-gray-900 transition-all">
-            <div className="rounded-2xl shadow-2xl p-8 w-[420px] border bg-white dark:bg-gray-800 dark:border-gray-700 transition-all">
-                <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">
-                    Create Your  Account
-                </h2>
+      <div className="min-h-screen flex items-center justify-center p-6 bg-red-50 dark:bg-gray-800 transition-all">
+  <div className="rounded-2xl shadow-lg p-8 w-[420px] border bg-white dark:bg-gray-700 dark:border-gray-600 transition-all">
+    <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-pink-400 via-rose-300 to-red-400 bg-clip-text text-transparent mb-6">
+      Create Your Account
+    </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* Name */}
-                    <div>
-                        <label className="font-medium text-gray-800 dark:text-gray-200">Full Name</label>
-                        <input
-                            name="fullName"
-                            type="text"
-                            placeholder="Enter your full name"
-                            className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring focus:ring-blue-300 outline-none"
-                            required
-                        />
-                    </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Name */}
+      <div>
+        <label className="font-medium text-gray-700 dark:text-gray-200">Full Name</label>
+        <input
+          name="fullName"
+          type="text"
+          placeholder="Enter your full name"
+          className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-500 focus:ring focus:ring-rose-200 outline-none"
+          required
+        />
+      </div>
 
-                    {/* Email */}
-                    <div>
-                        <label className="font-medium text-gray-800 dark:text-gray-200">Email</label>
-                        <input
-                            name="email"
-                            type="email"
-                            placeholder="Enter your email"
-                            className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring focus:ring-blue-300 outline-none"
-                            required
-                        />
-                    </div>
+      {/* Email */}
+      <div>
+        <label className="font-medium text-gray-700 dark:text-gray-200">Email</label>
+        <input
+          name="email"
+          type="email"
+          placeholder="Enter your email"
+          className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-500 focus:ring focus:ring-rose-200 outline-none"
+          required
+        />
+      </div>
 
-                    {/* Photo URL */}
-                    <div>
-                        <label className="font-medium text-gray-800 dark:text-gray-200">Photo URL</label>
-                        <input
-                            name="photoURL"
-                            type="file"
-                            placeholder="Enter your photo URL"
-                            className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring focus:ring-blue-300 outline-none"
-                        />
-                    </div>
-                    <label className="font-medium text-gray-800 dark:text-gray-200">Choose Role</label>
-                    <select name="blood" defaultValue="Choose Blood Group" className="select">
-                        <option disabled={true}>Choose Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
+      {/* Photo URL */}
+      <div>
+        <label className="font-medium text-gray-700 dark:text-gray-200">Photo URL</label>
+        <input
+          name="photoURL"
+          type="file"
+          placeholder="Enter your photo URL"
+          className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-500 focus:ring focus:ring-rose-200 outline-none"
+        />
+      </div>
 
-                    </select>
-                    {/* for district */}
-                    <select name="district" defaultValue="Select your district" className="select">
-                        <option disabled={true}>Select your district</option>
-                        {
-                            districts.map(d => <option value={d.name} key={ d.id}>{d.name}</option>)
-                        }
-                    </select>
-                    {/* for upazila */}
-                    <select name="upazila" defaultValue="Select your Upazila" className="select">
-                        <option disabled={true}>Select your Upazila</option>
-                        {
-                            upazilas.map(u => <option value={u.name} key={u.id}>{u.name}</option>)
-                        }
-                    </select>
+      <label className="font-medium text-gray-700 dark:text-gray-200">Choose Role</label>
+      <select name="blood" defaultValue="Choose Blood Group" className="select select-bordered w-full rounded-lg">
+        <option disabled={true}>Choose Blood Group</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+      </select>
 
-                    {/* Password */}
-                    <div>
-                        <label className="font-medium text-gray-800 dark:text-gray-200">Password</label>
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="Enter your password"
-                            className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring focus:ring-blue-300 outline-none"
-                            required
-                        />
-                    </div>
+      {/* District */}
+      <select name="district" defaultValue="Select your district" className="select select-bordered w-full rounded-lg">
+        <option disabled={true}>Select your district</option>
+        {districts.map(d => <option value={d.name} key={d.id}>{d.name}</option>)}
+      </select>
 
-                    {/* Register Button (NEW COLOR) */}
-                    <button
-                        type="submit"
-                        className="w-full text-center px-6 py-3 font-semibold text-white rounded-lg bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 hover:from-purple-500 hover:via-indigo-500 hover:to-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
-                    >
-                        Register
-                    </button>
+      {/* Upazila */}
+      <select name="upazila" defaultValue="Select your Upazila" className="select select-bordered w-full rounded-lg">
+        <option disabled={true}>Select your Upazila</option>
+        {upazilas.map(u => <option value={u.name} key={u.id}>{u.name}</option>)}
+      </select>
 
-                    {/* Google Login (NEW STYLE) */}
-                    <button
-                        type="button"
-                        onClick={googleSignIn}
-                        className="w-full flex items-center justify-center gap-3 px-6 py-3 mt-2 font-semibold text-gray-800 dark:text-gray-200 rounded-lg border dark:border-gray-600 shadow-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
-                    >
-                        <FcGoogle size={22} />
-                        Continue with Google
-                    </button>
-                </form>
+      {/* Password */}
+      <div>
+        <label className="font-medium text-gray-700 dark:text-gray-200">Password</label>
+        <input
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          className="w-full p-3 mt-1 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-500 focus:ring focus:ring-rose-200 outline-none"
+          required
+        />
+      </div>
 
-                {/* Redirect to Login */}
-                <p className="text-center text-gray-600 dark:text-gray-300 mt-4">
-                    Already have an account?{" "}
-                    <Link
-                        to={"/login"}
-                        className="text-blue-600 dark:text-blue-300 font-semibold hover:underline"
-                    >
-                        Login
-                    </Link>
-                </p>
-            </div>
-        </div>
+      {/* Register Button */}
+      <button
+        type="submit"
+        className="w-full text-center px-6 py-3 font-semibold text-white rounded-lg bg-gradient-to-r from-rose-400 via-pink-300 to-red-400 hover:from-red-400 hover:via-pink-300 hover:to-rose-400 transition-all duration-300 shadow-md hover:shadow-lg"
+      >
+        Register
+      </button>
+
+      {/* Google Login */}
+      <button
+        type="button"
+        onClick={googleSignIn}
+        className="w-full flex items-center justify-center gap-3 px-6 py-3 mt-2 font-semibold text-gray-800 dark:text-gray-200 rounded-lg border dark:border-gray-500 shadow-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
+      >
+        <FcGoogle size={22} />
+        Continue with Google
+      </button>
+    </form>
+
+    {/* Redirect to Login */}
+    <p className="text-center text-gray-600 dark:text-gray-300 mt-4">
+      Already have an account?{" "}
+      <Link
+        to={"/login"}
+        className="text-pink-500 dark:text-pink-300 font-semibold hover:underline"
+      >
+        Login
+      </Link>
+    </p>
+  </div>
+</div>
+
     );
 };
 

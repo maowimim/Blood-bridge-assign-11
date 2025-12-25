@@ -5,6 +5,7 @@ import axios from "axios";
 
 
 
+
 export const AuthContext = createContext();
 
 // google signin
@@ -49,6 +50,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         if (!user) return;
         axios.get(`https://blood-bank-server-six.vercel.app/users/role/${user.email}`)
+
             .then(res => {
                 setRole(res.data.role)
                 setUserStatus(res.data.status)

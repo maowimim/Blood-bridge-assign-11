@@ -52,7 +52,7 @@ const Footer = () => {
               <Mail className="w-5 h-5" /> contact@lifeblood.org
             </li>
             <li className="flex items-center gap-3">
-              <MapPin className="w-5 h-5" /> 456 Hope Street, Dhaka, Bangladesh
+              <MapPin className="w-5 h-5" /> KB Aman Ali Road,Chattogram, Bangladesh
             </li>
           </ul>
         </div>
@@ -78,7 +78,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-12 text-center text-red-800 text-sm border-t border-red-200 pt-4">
-        &copy; {new Date().getFullYear()} Lifeblood. All Rights Reserved. Crafted with ❤️ by Akash Zain.
+        &copy; {new Date().getFullYear()} Lifeblood. All Rights Reserved.
       </div>
     </footer>
   );

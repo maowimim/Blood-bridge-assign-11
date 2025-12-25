@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { AuthContext } from '../../Provider/AuthProvider';
+
 import useAxios from '../../hook/useAxios';
+import useAxiosSecure from '../../hook/useAxiosSecure';
 
 const Allusers = () => {
     const axiosInstance = useAxios()
@@ -20,7 +21,7 @@ const Allusers = () => {
     }, [ axiosInstance])
 
     const handleStatusChange = (email,status)=>{
-         axiosSecure.patch(`/update/user/status?email=${email}&status=${status}`)
+         useAxiosSecure.patch(`/update/user/status?email=${email}&status=${status}`)
            .then(res=>{
             console.log(res.data)
             fetchUsers()
