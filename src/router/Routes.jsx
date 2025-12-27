@@ -15,6 +15,7 @@ import PaymentCancel from "../Pages/PaymentCancel";
 import SearchRequest from "../Pages/SearchRequest";
 import Volunteer from "../Pages/Dashboard/Volunteer";
 import AllRequest from "../Pages/Dashboard/AllRequest";
+import RequestDetails from "../Pages/RequestDetails";
 
 const router = createBrowserRouter([
   {
@@ -53,12 +54,16 @@ const router = createBrowserRouter([
       {
         path : '/allRequest',
         Component : AllRequest
+     },
+      {
+        path : '/request/:id',
+        Component : RequestDetails
      }
     ]
   },
   {
     path:'/dashboard',
-   element:<PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+   element:<DashboardLayout></DashboardLayout>,
    children:[
     {
       path:'maindashboard',

@@ -46,9 +46,11 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-                <Link to="/dashboard/maindashboard" className="btn btn-active mr-2">
+                {
+                    user&&(<Link to="/dashboard/maindashboard" className="btn btn-active mr-2">
                     Dashboard
-                </Link>
+                </Link>)
+                }
 
                 {
                     user

@@ -72,7 +72,11 @@ const Aside = () => {
           <Home className="h-5 w-5" />
           My Request
         </NavLink>
+     
 
+    
+    {
+      role == "admin" && (
         <NavLink
           to="/dashboard/addVolunteer"
           className={({ isActive }) =>
@@ -83,6 +87,12 @@ const Aside = () => {
           <Home className="h-5 w-5" />
           Add Volunteer
         </NavLink>
+        )
+    }
+
+
+
+
 
         <NavLink
           to="/admin/users"

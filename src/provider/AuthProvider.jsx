@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
                 setRoleLoading(false)
             })
     }, [user])
-//  console.log(user)
+  console.log(user)
 
     const authData = {
         registerWithEmailPassword,
